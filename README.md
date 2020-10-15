@@ -1,4 +1,4 @@
-# Microverse-Algorithms-And-Data-Structures
+# Microverse Algorithms And Data Structures
 
 >This project is a repository containing solutions to the Alogrithms & Data Structures curriculum set by Microverse.
 
