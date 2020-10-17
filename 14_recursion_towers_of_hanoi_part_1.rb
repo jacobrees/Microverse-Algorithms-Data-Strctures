@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 def move(starting, goal)
-intermediate = ([1,2,3]-[starting,goal]).first
+  intermediate = ([1, 2, 3] - [starting, goal]).first
   result = move_text(starting, intermediate)
   result += move_text(starting, goal)
   result += move_text(intermediate, goal)
@@ -7,7 +9,7 @@ intermediate = ([1,2,3]-[starting,goal]).first
 end
 
 def move_text(position1, position2)
-  position1.to_s + "->" + position2.to_s + " "
+  position1.to_s + '->' + position2.to_s + ' '
 end
 
 puts move(1, 3)

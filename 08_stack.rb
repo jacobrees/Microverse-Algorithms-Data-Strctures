@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :value, :next_node
   def initialize(value, next_node = nil)
@@ -9,29 +11,27 @@ end
 class Stack
   def initialize
     @tail = nil
-    @head= nil
+    @head = nil
   end
-  
+
   def push(number)
-    new_node =  Node.new(number)
+    new_node = Node.new(number)
     if @head.nil?
       @head = new_node
       @tail = @head
     else
       head = @head
-      while head.next_node != nil
-        head = head.next_node
-      end
-        head.next_node = new_node
-        @tail = head.next_node
+      head = head.next_node until head.next_node.nil?
+      head.next_node = new_node
+      @tail = head.next_node
     end
   end
-  
+
   def pop
     if @head.nil?
-      return "There are no more elements in the stack"
+      'There are no more elements in the stack'
     else
-        if @head.next_node.nil?
+      if @head.next_node.nil?
         val = @head.value
         @tail = nil
         @head = @tail
@@ -39,10 +39,8 @@ class Stack
       end
       tail = @tail.value
       head = @head
-      
-      while head.next_node != @tail
-        head = head.next_node
-      end
+
+      head = head.next_node while head.next_node != @tail
       @tail = head
       head.next_node = nil
       tail

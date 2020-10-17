@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :value, :next_node
   def initialize(value, next_node = nil)
-	  @value = value
+    @value = value
     @next_node = next_node
   end
 end
 
 class Queue
- def initialize 
-   @head = nil
- end
+  def initialize
+    @head = nil
+  end
 
   def add(number)
     node = Node.new(number)
@@ -17,27 +19,24 @@ class Queue
       @head = node
     else
       head = @head
-      while head.next_node != nil
-        head = head.next_node
-      end
+      head = head.next_node until head.next_node.nil?
       head.next_node = node
     end
   end
 
   def remove
     if @head.nil?
-      return -1
+      -1
     elsif @head.next_node.nil?
       val = @head.value
       @head = nil
-      return val
+      val
     else
       val = @head.value
       @head = @head.next_node
-      return val
+      val
     end
   end
-
 end
 
 queue = Queue.new

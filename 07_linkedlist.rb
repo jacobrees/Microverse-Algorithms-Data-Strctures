@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :value, :next_node
   def initialize(value, next_node = nil)
-	  @value = value
+    @value = value
     @next_node = next_node
   end
 end
@@ -12,35 +14,34 @@ class LinkedList
     @tail = nil
   end
 
- def add(number)
-      if @head.nil?
-        @head = Node.new(number)
-      else
-        current = @head
-        while current.next_node != nil
-          current = current.next_node
-      end
+  def add(number)
+    if @head.nil?
+      @head = Node.new(number)
+    else
+      current = @head
+      current = current.next_node until current.next_node.nil?
       current.next_node = Node.new(number)
     end
   end
 
   def get(index)
-   current = @head
-   index.times do
-     current = current.next_node
-   end
-    return current.value
+    current = @head
+    index.times do
+      current = current.next_node
+    end
+    current.value
   end
 
   def get_node(index)
     noder = @head
     index.times do
       raise 'list is too short' if noder.nil?
+
       noder = noder.next_node
     end
     noder
   end
-  
+
   def add_at(index, value)
     new_node = Node.new(value)
     if @head.nil?
@@ -56,7 +57,7 @@ class LinkedList
       new_node.next_node = ex_node
     end
   end
-  
+
   def remove(index)
     deleted = get_node(index)
     if index.zero?
