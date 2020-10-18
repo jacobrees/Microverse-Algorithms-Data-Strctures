@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 def tree_height(tree_as_list)
-  tree_as_list.pop(0)
-  sum = 0
+  tree_as_list.pop
+  remove_node = 2
+  height = 1
   loop do
-    sum += 1
-    break if tree_as_list[1].nil? || tree_as_list[2].nil?
+    break if tree_as_list.empty?
 
-    i = 0
-    while i < sum
-      tree_as_list.pop(1)
-      tree_as_list.pop(2)
-      i += 1
-    end
+    tree_as_list.pop(remove_node)
+    height += 1
+    remove_node *= 2
   end
-  sum
+  height
 end
+
+puts tree_height([2, 7, 5, 2, 6, 0, 9])
+# => 3
