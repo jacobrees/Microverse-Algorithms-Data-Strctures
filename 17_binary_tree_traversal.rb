@@ -10,7 +10,7 @@ class Node
 end
 
 def array_to_tree(array, i)
-  return nil if i >= array.length || array[i] == 0
+  return nil if i >= array.length || (array[i]).zero?
 
   node = Node.new(array[i])
   node.left = array_to_tree(array, 2 * i + 1)
