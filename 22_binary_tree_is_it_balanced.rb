@@ -11,7 +11,7 @@ end
 def array_to_tree(arr, i = 0)
   # use your function from the previous challenge
   return nil unless i < arr.length
-  return nil if arr[i] == 0
+  return nil if (arr[i]).zero?
 
   left = 2 * i + 1
   right = 2 * i + 2
