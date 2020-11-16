@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'set'
-
 def find_duplicates(array)
-  s1 = Set.new
+  dups = []
+  single = []
   until array.empty?
     check = array.shift
-    s1.add(check) if array.include?(check)
+    dups.push(check) if single.include?(check)
+    single.push(check) unless single.include?(check)
   end
-  s1
+  dups
 end
 
 p find_duplicates([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
