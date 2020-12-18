@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 def connected_graph?(graph)
   has_nodes_dfs = depth_first_search(graph)
   has_nodes_bfs = bfs(graph)
-  
-  
+
   has_nodes_dfs.count + has_nodes_bfs.count == graph.count * 2
 end
 
@@ -15,14 +16,14 @@ def bfs(graph)
   until queue.empty?
     current = queue.shift
     path.push(current)
-    graph[current].each do |adjacent| 
+    graph[current].each do |adjacent|
       unless discovered[adjacent]
         queue.push(adjacent)
         discovered[adjacent] = true
       end
     end
   end
-  path 
+  path
 end
 
 def depth_first_search(graph)
@@ -45,21 +46,21 @@ def depth_first_search(graph)
 end
 
 puts connected_graph?({
-  0 => [2], 
-  1 => [4], 
-  2 => [0, 5, 3], 
-  3 => [5, 2], 
-  4 => [5, 1], 
-  5 => [4, 2, 3]
-})
+                        0 => [2],
+                        1 => [4],
+                        2 => [0, 5, 3],
+                        3 => [5, 2],
+                        4 => [5, 1],
+                        5 => [4, 2, 3]
+                      })
 # => true
 
 puts connected_graph?({
-  0 => [1, 2], 
-  1 => [0, 2], 
-  2 => [0, 1, 3, 4, 5], 
-  3 => [2, 4], 
-  4 => [3, 2], 
-  5 => [2]
-})
+                        0 => [1, 2],
+                        1 => [0, 2],
+                        2 => [0, 1, 3, 4, 5],
+                        3 => [2, 4],
+                        4 => [3, 2],
+                        5 => [2]
+                      })
 # => true
